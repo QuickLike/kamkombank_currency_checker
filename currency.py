@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
-from constraints import bot, CITY, MAIN_URL, CURRENCY_URL, USER_ID
+from constraints import CITY, MAIN_URL, CURRENCY_URL
 
 
 def get_points() -> dict[int, str]:
@@ -31,6 +31,8 @@ def get_currencies():
 
 
 async def send_data(data: dict[str, dict[str, tuple]]):
+    from constraints import bot, USER_ID
+
     if CITY is not None:
         await bot.send_message(USER_ID, f'Курсы валют по городу "{CITY.capitalize()}"')
     for address, currencies in data.items():
@@ -45,7 +47,7 @@ async def send_data(data: dict[str, dict[str, tuple]]):
         Комиссия: {commission}
         '''
         await bot.send_message(USER_ID, message_text, parse_mode='HTML')
-        await asyncio.sleep(3)
+        await asyncio.sleep(1.5)
 
 
 
