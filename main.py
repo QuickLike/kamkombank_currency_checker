@@ -7,7 +7,6 @@ from currency import get_currencies, send_data
 
 async def main():
     while True:
-        BOT_TOKEN = None
         if BOT_TOKEN is not None:
             await send_data(get_currencies())
         else:

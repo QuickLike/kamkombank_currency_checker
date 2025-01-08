@@ -42,7 +42,7 @@ async def send_data(data: dict[str, dict[str, tuple]]):
         commission = currencies['Комиссия']
         del currencies['Комиссия']
         message_text = (
-            fr"<u>{address}</u>\n\n{'\n'.join([f'{cur[0]}:     {cur[1][0]} - {cur[1][1]}' for cur in currencies.items()])}\n\n"
+            "<u>" + address + "</u>\n\n" + '\n'.join([f'{cur[0]}:     {cur[1][0]} - {cur[1][1]}' for cur in currencies.items()]) + "\n\n"
             f'Комиссия: {commission}'
         )
         await bot.send_message(USER_ID, message_text, parse_mode='HTML')
